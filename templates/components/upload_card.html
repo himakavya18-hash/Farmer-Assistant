@@ -1,0 +1,14 @@
+<div class="card shadow" id="upload">
+    <div class="card-header bg-success text-white">Upload Crop Image</div>
+    <div class="card-body">
+        <form action="{{ url_for('upload_image') }}" method="post" enctype="multipart/form-data">
+            <label class="form-label" for="image">Leaf or crop image</label>
+            <input id="image" name="image" type="file" class="form-control" accept="image/png,image/jpeg,image/webp" required>
+            <div class="form-text">PNG, JPG, JPEG, or WEBP; maximum 5 MB.</div>
+            <button type="submit" class="btn btn-success mt-3 w-100">Upload Image</button>
+        </form>
+        {% if uploaded_image %}
+        <img class="img-fluid rounded mt-3 uploaded-preview" src="{{ url_for('static', filename='uploads/' ~ uploaded_image) }}" alt="Uploaded crop image">
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row g-4">
+
+    <div class="col-lg-5">
+        {% include 'components/upload_card.html' %}
+    </div>
+
+    <div class="col-lg-7">
+        {% include 'components/question_card.html' %}
+    </div>
+
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        {% include 'components/crop_recommendation_card.html' %}
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        {% include 'components/weather_card.html' %}
+    </div>
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-12">
+        {% include 'components/chat_history.html' %}
+    </div>
+
+</div>
+
+{% endblock %}

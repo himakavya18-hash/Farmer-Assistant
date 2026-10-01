@@ -1,0 +1,18 @@
+<div class="card shadow" id="history">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <span>Chat History</span>
+        {% if history %}<form action="{{ url_for('clear_history') }}" method="post"><button class="btn btn-sm btn-outline-light" type="submit">Clear</button></form>{% endif %}
+    </div>
+    <div class="card-body history-box" aria-live="polite">
+        {% if history %}
+            {% for item in history %}
+            <div class="chat {{ 'user' if item.sender == 'user' else 'bot' }}">
+                <strong>{{ 'You' if item.sender == 'user' else 'Advisor' }}</strong><br>
+                {{ item.message }}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted mb-0">Your questions and answers will appear here.</p>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,50 @@
+body{
+    background:#f4f7fa;
+}
+
+.sidebar{
+    min-height:100vh;
+}
+
+.list-group-item{
+    margin-bottom:8px;
+}
+
+.card{
+    border:none;
+    border-radius:12px;
+}
+
+.history-box{
+    max-height:400px;
+    overflow-y:auto;
+}
+
+.chat{
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+.user{
+    background:#d1e7dd;
+}
+
+.bot{
+    background:#f8f9fa;
+}
+
+.uploaded-preview{
+    max-height:220px;
+    width:100%;
+    object-fit:cover;
+}
+
+.weather-now{font-size:1.15rem;font-weight:600;}
+.weather-now span,.forecast-icon{font-size:1.6rem;}
+.weather-stat,.forecast-day{height:100%;padding:12px;border-radius:8px;background:#f4f8ff;}
+.weather-stat span{display:block;color:#6c757d;font-size:.85rem;}
+.weather-stat strong{display:block;margin-top:4px;}
+
+.recommendation-card{height:100%;padding:16px;border:1px solid #d1e7dd;border-radius:8px;background:#f6fbf7;}
+.recommendation-card h5{color:#198754;}

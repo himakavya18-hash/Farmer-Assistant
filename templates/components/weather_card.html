@@ -1,0 +1,31 @@
+<div class="card shadow" id="weather">
+    <div class="card-header bg-primary text-white">Local Weather</div>
+    <div class="card-body">
+        <form action="{{ url_for('weather') }}" method="post" class="row g-2 align-items-end">
+            <div class="col-md-8">
+                <label class="form-label" for="location">Farm location</label>
+                <input id="location" name="location" class="form-control" required placeholder="Example: Pune, Maharashtra">
+                <div class="form-text">Search by village, town, or city.</div>
+            </div>
+            <div class="col-md-4"><button type="submit" class="btn btn-primary w-100">Get Weather</button></div>
+        </form>
+        {% if weather %}
+        <hr>
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <div><h4 class="mb-0">{{ weather.location }}</h4><small class="text-muted">Updated {{ weather.updated_at }}</small></div>
+            <div class="weather-now"><span>{{ weather.current.icon }}</span> {{ weather.current.temperature }}°C · {{ weather.current.description }}</div>
+        </div>
+        <div class="row g-3">
+            <div class="col-6 col-md-3"><div class="weather-stat"><span>Humidity</span><strong>{{ weather.current.humidity }}%</strong></div></div>
+            <div class="col-6 col-md-3"><div class="weather-stat"><span>Rain now</span><strong>{{ weather.current.rain }} mm</strong></div></div>
+            <div class="col-6 col-md-3"><div class="weather-stat"><span>Wind</span><strong>{{ weather.current.wind }} km/h</strong></div></div>
+            <div class="col-6 col-md-3"><div class="weather-stat"><span>Conditions</span><strong>{{ weather.current.description }}</strong></div></div>
+        </div>
+        <div class="row g-3 mt-1">
+            {% for day in weather.forecast %}
+            <div class="col-md-4"><div class="forecast-day"><strong>{{ day.date }}</strong><br><span class="forecast-icon">{{ day.icon }}</span> {{ day.description }}<br><small>{{ day.low }}–{{ day.high }}°C · Rain: {{ day.rain_chance }}% ({{ day.rain_total }} mm)</small></div></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>

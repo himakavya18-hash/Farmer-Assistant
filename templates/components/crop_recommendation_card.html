@@ -1,0 +1,47 @@
+<div class="card shadow" id="recommend-crops">
+    <div class="card-header bg-success text-white">Crop Recommendation</div>
+    <div class="card-body">
+        <p class="text-muted">Choose your growing conditions for suitable crop options.</p>
+        <form action="{{ url_for('recommend_crops_route') }}" method="post" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label" for="season">Growing season</label>
+                <select id="season" name="season" class="form-select" required>
+                    <option value="" selected disabled>Select season</option>
+                    <option value="kharif">Kharif (monsoon)</option>
+                    <option value="rabi">Rabi (winter)</option>
+                    <option value="zaid">Zaid (summer)</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="soil_type">Soil type</label>
+                <select id="soil_type" name="soil_type" class="form-select" required>
+                    <option value="" selected disabled>Select soil type</option>
+                    <option value="loam">Loam</option>
+                    <option value="clay">Clay</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="black">Black</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="water_level">Water availability</label>
+                <select id="water_level" name="water_level" class="form-select" required>
+                    <option value="low">Low</option>
+                    <option value="moderate" selected>Moderate</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="col-12"><button type="submit" class="btn btn-success">Find Suitable Crops</button></div>
+        </form>
+
+        {% if recommendations %}
+        <hr>
+        <p class="mb-3"><strong>Selected conditions:</strong> {{ recommendations.season }}, {{ recommendations.soil_type }} soil, {{ recommendations.water_level }} water availability.</p>
+        <div class="row g-3">
+            {% for crop in recommendations.crops %}
+            <div class="col-md-4"><div class="recommendation-card"><h5>{{ crop.name }}</h5><p class="mb-2">{{ crop.note }}</p><small>{{ crop.fit }}</small></div></div>
+            {% endfor %}
+        </div>
+        <p class="small text-muted mt-3 mb-0">These are general suggestions. Confirm the variety, sowing date, and input plan with your local agriculture extension office.</p>
+        {% endif %}
+    </div>
+</div>
